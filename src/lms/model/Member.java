@@ -28,7 +28,7 @@ public class Member{
     }
 
     //Setters
-    public void setMemberID(String memberID) {
+    public void setMemberID(String memberId) {
         if(memberId == null || memberId.isBlank()){
             throw new IllegalArgumentException("Name cannot be blank");
         }
