@@ -23,5 +23,6 @@ public class Main {
         }catch(IllegalArgumentException e){
             System.out.println("Rejected invalid book: " + e.getMessage());
         }
+
     }
 }
