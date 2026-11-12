@@ -40,7 +40,7 @@ public class Library {
     public void listLibraryItem(){
         System.out.println("--- Library Items in the library ---");
         for(LibraryItem item : items){
-            System.out.println(items);
+            System.out.println(item);
         }
     }
 
@@ -62,7 +62,7 @@ public class Library {
         if(item instanceof DVD dvd){
             System.out.println("Streaming \"" + dvd.getTitle() + "\" (" + dvd.getDurationMinutes() + " min)...");
         }else{
-            System.out.println(item.getTitle() + " cannot be streamed.");
+            System.out.println(item.getTitle() + " cannot be streamed - it isn't a DVD.");
         }
     }
 }

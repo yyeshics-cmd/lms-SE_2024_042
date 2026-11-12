@@ -1,27 +1,34 @@
 package lms;
 
-import lms.model.Book;
-import lms.model.Member;
+import lms.model.*;
 import lms.service.Library;
 
 public class Main {
     public static void main(String[] args){
         Library library = new Library();
 
-        library.addBook(new Book("Clean Code", "Robert C.Martin", "987-1234526789"));
-        library.addBook(new Book("Effective Java", "Joshua Bloch", "987-3456783424"));
-        library.addBook(new Book("The Pragmatic Programmer", "Hunt & Thomas", "987-5678123425"));
+        Book b1 = new Book("B001", "Clean Code", "Robert C.Martin");
+        Book b2 = new Book("B002", "Effective Java", "Joshua Bloch");
+        DVD d1 = new DVD("D001", "Introduction to Algorithms", 120);
 
-        library.addMember(new Member("M001", "Yeshika Gallage"));
-        library.addMember(new Member("M002", "Hamna Fathima"));
+        library.addItem(b1);
+        library.addItem(b2);
+        library.addItem(d1);
 
-        library.listBooks();
+
+        Student s1 = new Student("S001", "Alice");
+        Staff st1 = new Staff("ST001", "Dr. Smith");
+
+        library.addMember(s1);
+        library.addMember(st1);
+
+
+        library.listLibraryItem();
         library.listMembers();
+        library.printAllLateFees(3);
 
-        try{
-            library.addBook(new Book("", "Nobody", "000-0000000000"));
-        }catch(IllegalArgumentException e){
-            System.out.println("Rejected invalid book: " + e.getMessage());
-        }
+        library.streamIfPossible(d1);
+        library.streamIfPossible(b1);
+
     }
 }
