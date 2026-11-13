@@ -4,10 +4,12 @@ public class Member {
     private String memberId;
     private String name;
     private int borrowedCount;
+    private int maxBorrowedLimit;
 
-    public Member(String memberId, String name){
+    public Member(String memberId, String name, int maxBorrowedLimit){
         setMemberId(memberId);
         setName(name);
+        setMaxBorrowedLimit(maxBorrowedLimit);
         this.borrowedCount = 0;
     }
 
@@ -21,6 +23,7 @@ public class Member {
     public int getBorrowedCount(){
         return borrowedCount;
     }
+    public int getMaxBorrowedLimit(){ return maxBorrowedLimit; }
 
     //setters
     public void setMemberId(String memberId){
@@ -40,6 +43,12 @@ public class Member {
             throw new IllegalArgumentException("Borrowed count cannot be negative");
         }
         this.borrowedCount = borrowedCount;
+    }
+    public void setMaxBorrowedLimit(int maxBorrowedLimit){
+        if(maxBorrowedLimit < 0){
+            throw new IllegalArgumentException("Max Borrowed Limit cannot be negative");
+        }
+        this.maxBorrowedLimit = maxBorrowedLimit;
     }
 
     public void incrementBorrowedCount(){
