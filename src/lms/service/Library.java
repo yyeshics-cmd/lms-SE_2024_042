@@ -31,14 +31,6 @@ public class Library {
         thing.loan(member);
     }
 
-    public void reserveIfPossible(LibraryItem item, Member member){
-        if(item instanceof Reservable r){
-            r.reserve(member);
-        }else{
-            System.out.println(item.getTitle() + " cannot be reserved.");
-        }
-    }
-
     //getters
     public List<LibraryItem> getLibraryItem(){
         return items;
@@ -48,29 +40,39 @@ public class Library {
     }
 
     public void listLibraryItem(){
-        System.out.println("--- Library Items in the library ---");
+        System.out.println("\n--- Library Items in the library ---");
         for(LibraryItem item : items){
             System.out.println(item);
         }
     }
 
     public void listMembers(){
-        System.out.println("--- Registered members ---");
+        System.out.println("\n--- Registered members ---");
         for(Member member : members){
             System.out.println(member);
         }
     }
 
     public void printAllLateFees(int daysLate){
-        System.out.println("--- Late fees if " + daysLate + " day(s) late ---");
+        System.out.println("\n--- Late fees if " + daysLate + " day(s) late ---");
         for(LibraryItem item : items){
             System.out.println(item.getTitle() + ": " + item.calculateLateFee(daysLate));
         }
     }
 
-    public void printMemberByActivity(){
+    public void reserveIfPossible(LibraryItem item, Member member){
+        System.out.println("\n--- Reservations ---");
+        if(item instanceof Reservable r){
+            r.reserve(member);
+        }else{
+            System.out.println(item.getTitle() + " cannot be reserved.");
+        }
+    }
+
+    public void printMembersByActivity(){
         List<Member> sortedMembers = new ArrayList<>(members);
         Collections.sort(sortedMembers);
+        System.out.println("\n--- Members ranked by activity ---");
         for(Member m : sortedMembers){
             System.out.println(m.getName() + " (" + m.getBorrowedCount() + " borrowed)");
         }
