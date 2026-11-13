@@ -24,7 +24,7 @@ public class Book extends LibraryItem implements Reservable{
     @Override
     public void reserve(Member m){
         this.reservedBy = m;
-        System.out.println(getId() + ": " + getTitle() + " reserved for " + m.getName());
+        System.out.println(getTitle() + " reserved for " + m.getName());
     }
 
     @Override
